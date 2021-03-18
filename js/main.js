@@ -62,3 +62,39 @@ function countTotalAmount() {
   })
   return amount
 }
+
+// ordering functionality
+const form = document.querySelector(".order-form")
+const orderButton = document.querySelector(".btn-check")
+const modal = document.querySelector(".order-modal-container")
+const modalOverlay = document.querySelector(".order-modal-overlay")
+const closeButton = document.querySelector(".close")
+const nameField = document.querySelector("#order-name")
+const emailField = document.querySelector("#order-email")
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault()
+  if (nameField.value.trim() == "" || emailField.value.trim() == "") {
+    alert("Пожалуйста, заполните все поля формы")
+    return
+  }
+  alert("Благодарим за покупку!")
+  nameField.value == "" 
+  emailField.value == ""
+  amountText.textContent = 0
+  dishesNumberText.textContent = 0
+  document.querySelectorAll(".qty__item").forEach(item => item.value = "")
+  closeModal()
+})
+
+orderButton.onclick = openModal
+modalOverlay.onclick = closeModal
+closeButton.onclick = closeModal
+
+function openModal() {
+  modal.hidden = false
+}
+
+function closeModal() {
+  modal.hidden = true
+}
